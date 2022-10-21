@@ -28,7 +28,7 @@ ash = "0.32"
 hal = { path = "../../hal", version = "0.9", package = "gfx-hal" }
 parking_lot = "0.11"
 smallvec = "1.0"
-raw-window-handle = "0.3"
+raw-window-handle = "0.5"
 inplace_it = "0.3.3"
 gfx-renderdoc = { path = "../../auxil/renderdoc", version = "0.1.0" }
 
