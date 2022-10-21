@@ -33,7 +33,7 @@ core-graphics-types = "0.1.1"
 fxhash = "0.2.1"
 log = "0.4"
 dispatch = { version = "0.2", optional = true }
-metal = { version = "0.23", features = ["private"] }
+metal = { version = "0.24", features = ["private"] }
 foreign-types = "0.3"
 objc = "0.2.5"
 block = "0.1"
