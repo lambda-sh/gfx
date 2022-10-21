@@ -43,7 +43,7 @@ gfx-backend-empty = { path = "../src/backend/empty", version = "0.9" }
 winit = { version = "0.24", features = ["web-sys"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-env_logger = "0.8"
+env_logger = "0.9"
 glsl-to-spirv = "0.1.4"
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
