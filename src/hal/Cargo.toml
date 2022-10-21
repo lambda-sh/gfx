@@ -21,7 +21,7 @@ path = "src/lib.rs"
 [dependencies]
 bitflags = "1.0"
 naga = { git = "https://github.com/gfx-rs/naga", tag = "gfx-26" }
-raw-window-handle = "0.3"
+raw-window-handle = "0.5"
 serde = { version = "1", features = ["serde_derive"], optional = true }
 thiserror = "1"
 external_memory = { path = "../auxil/external-memory", version = "0.0.1", package = "external-memory" }

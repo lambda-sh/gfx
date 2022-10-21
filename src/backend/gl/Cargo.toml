@@ -27,7 +27,7 @@ log = "0.4"
 hal = { package = "gfx-hal", path = "../../hal", version = "0.9" }
 glow = "0.9"
 parking_lot = "0.11"
-raw-window-handle = "0.3"
+raw-window-handle = "0.5"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 egl = { package = "khronos-egl", version = "4.1", features = ["dynamic"] }
