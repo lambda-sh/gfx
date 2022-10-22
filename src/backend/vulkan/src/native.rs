@@ -4,6 +4,7 @@ use hal::{
     image::{Extent, SubresourceRange},
     pso,
 };
+use ash::vk;
 use inplace_it::inplace_or_alloc_from_iter;
 use parking_lot::Mutex;
 use smallvec::SmallVec;
