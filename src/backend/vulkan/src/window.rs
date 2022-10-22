@@ -1,6 +1,6 @@
 use std::{borrow::Borrow, fmt, os::raw::c_void, sync::Arc, time::Instant};
 
-use ash::{extensions::khr, version::DeviceV1_0 as _, vk};
+use ash::{extensions::khr, vk};
 use hal::{format::Format, window as w};
 
 use crate::{
@@ -205,7 +205,7 @@ impl Instance {
 
             unsafe {
                 mac_os_loader
-                    .create_mac_os_surface_mvk(&info, None)
+                    .create_mac_os_surface(&info, None)
                     .expect("Unable to create macOS surface")
             }
         };
