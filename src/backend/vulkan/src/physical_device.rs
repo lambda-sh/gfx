@@ -1458,7 +1458,6 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                 external_buffer_properties.external_memory_properties
             }
             Some(ExtensionFn::Promoted) => {
-                use ash::version::InstanceV1_1;
                 let mut external_buffer_properties =
                     vk::ExternalBufferProperties::builder().build();
                 unsafe {
@@ -1521,7 +1520,6 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
             );
         }
 
-        use ash::version::InstanceV1_1;
         let external_memory_type_flags: hal::external_memory::ExternalMemoryTypeFlags =
             external_memory_type.into();
         let vk_external_memory_type =
@@ -1740,15 +1738,12 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                 .build();
 
             match get_physical_device_properties {
-                ExtensionFn::Promoted => {
-                    use ash::version::InstanceV1_1;
-                    unsafe {
-                        self.instance.inner.get_physical_device_properties2(
-                            self.handle,
-                            &mut physical_device_properties2,
-                        );
-                    }
-                }
+                ExtensionFn::Promoted => unsafe {
+                    self.instance.inner.get_physical_device_properties2(
+                        self.handle,
+                        &mut physical_device_properties2,
+                    );
+                },
                 ExtensionFn::Extension(get_physical_device_properties) => unsafe {
                     get_physical_device_properties.get_physical_device_properties2_khr(
                         self.handle,
