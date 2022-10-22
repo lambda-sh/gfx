@@ -680,7 +680,6 @@ impl PhysicalDeviceInfo {
 
             match get_device_properties {
                 ExtensionFn::Promoted => {
-                    use ash::version::InstanceV1_1;
                     unsafe {
                         instance
                             .inner
@@ -1258,7 +1257,6 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                     // Ash does not implement the "double call" behaviour for this function, so it is implemented here.
                     match extension {
                         ExtensionFn::Promoted => {
-                            use ash::version::InstanceV1_1;
                             self.instance.inner.get_physical_device_format_properties2(
                                 self.handle,
                                 format.map_or(vk::Format::UNDEFINED, conv::map_format),

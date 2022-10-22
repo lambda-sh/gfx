@@ -1,7 +1,7 @@
 use crate::{command::CommandBuffer, conv, Backend, RawDevice};
 use hal::{command, pool};
 
-use ash::{version::DeviceV1_0, vk};
+use ash::vk;
 use inplace_it::inplace_or_alloc_from_iter;
 
 use std::sync::Arc;
