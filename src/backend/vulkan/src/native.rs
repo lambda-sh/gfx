@@ -1,5 +1,4 @@
 use crate::{Backend, RawDevice, ROUGH_MAX_ATTACHMENT_COUNT};
-use ash::{version::DeviceV1_0, vk};
 use hal::{
     device::OutOfMemory,
     image::{Extent, SubresourceRange},

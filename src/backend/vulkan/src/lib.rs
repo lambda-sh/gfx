@@ -32,7 +32,6 @@ use ash::Entry;
 type Entry = ash::EntryCustom<()>;
 use ash::{
     extensions::{ext, khr, nv::MeshShader},
-    version::{DeviceV1_0, EntryV1_0, InstanceV1_0},
     vk,
 };
 

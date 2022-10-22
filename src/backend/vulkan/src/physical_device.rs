@@ -1,6 +1,5 @@
 use ash::{
     extensions::{khr::DrawIndirectCount, khr::Swapchain, nv::MeshShader},
-    version::{DeviceV1_0, InstanceV1_0},
     vk,
 };
 
@@ -1249,7 +1248,8 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                     (format_properties, Vec::new())
                 }
                 Some(ref extension) => {
-                    let mut raw_format_modifiers: Vec<vk::DrmFormatModifierPropertiesEXT> = Vec::new();
+                    let mut raw_format_modifiers: Vec<vk::DrmFormatModifierPropertiesEXT> =
+                        Vec::new();
                     let mut drm_format_properties =
                         vk::DrmFormatModifierPropertiesListEXT::builder().build();
                     let mut format_properties2 = vk::FormatProperties2::builder()
@@ -1264,14 +1264,18 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                                 format.map_or(vk::Format::UNDEFINED, conv::map_format),
                                 &mut format_properties2,
                             );
-                            raw_format_modifiers.reserve_exact(drm_format_properties.drm_format_modifier_count as usize);
-                            drm_format_properties.p_drm_format_modifier_properties = raw_format_modifiers.as_mut_ptr();
+                            raw_format_modifiers.reserve_exact(
+                                drm_format_properties.drm_format_modifier_count as usize,
+                            );
+                            drm_format_properties.p_drm_format_modifier_properties =
+                                raw_format_modifiers.as_mut_ptr();
                             self.instance.inner.get_physical_device_format_properties2(
                                 self.handle,
                                 format.map_or(vk::Format::UNDEFINED, conv::map_format),
                                 &mut format_properties2,
                             );
-                            raw_format_modifiers.set_len(drm_format_properties.drm_format_modifier_count as usize);
+                            raw_format_modifiers
+                                .set_len(drm_format_properties.drm_format_modifier_count as usize);
                         }
                         ExtensionFn::Extension(extension) => {
                             extension.get_physical_device_format_properties2_khr(
@@ -1279,14 +1283,18 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
                                 format.map_or(vk::Format::UNDEFINED, conv::map_format),
                                 &mut format_properties2,
                             );
-                            raw_format_modifiers.reserve_exact(drm_format_properties.drm_format_modifier_count as usize);
-                            drm_format_properties.p_drm_format_modifier_properties = raw_format_modifiers.as_mut_ptr();
+                            raw_format_modifiers.reserve_exact(
+                                drm_format_properties.drm_format_modifier_count as usize,
+                            );
+                            drm_format_properties.p_drm_format_modifier_properties =
+                                raw_format_modifiers.as_mut_ptr();
                             extension.get_physical_device_format_properties2_khr(
                                 self.handle,
                                 format.map_or(vk::Format::UNDEFINED, conv::map_format),
                                 &mut format_properties2,
                             );
-                            raw_format_modifiers.set_len(drm_format_properties.drm_format_modifier_count as usize);
+                            raw_format_modifiers
+                                .set_len(drm_format_properties.drm_format_modifier_count as usize);
                         }
                     }
 
@@ -1503,8 +1511,10 @@ impl adapter::PhysicalDevice<Backend> for PhysicalDevice {
         usage: image::Usage,
         view_caps: image::ViewCapabilities,
         external_memory_type: external_memory::ExternalMemoryType,
-    ) -> Result<external_memory::ExternalMemoryProperties, external_memory::ExternalImagePropertiesError>
-    {
+    ) -> Result<
+        external_memory::ExternalMemoryProperties,
+        external_memory::ExternalImagePropertiesError,
+    > {
         if self.instance.external_memory_capabilities.is_none() {
             panic!(
                 "This function rely on `Feature::EXTERNAL_MEMORY`, but the feature is not enabled"
