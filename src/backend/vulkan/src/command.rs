@@ -1,7 +1,4 @@
-use ash::{
-    version::{DeviceV1_0, DeviceV1_2},
-    vk,
-};
+use ash::vk;
 use smallvec::SmallVec;
 use std::{collections::hash_map::Entry, ffi::CString, mem, ops::Range, slice, sync::Arc};
 

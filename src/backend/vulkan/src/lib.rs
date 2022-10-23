@@ -32,7 +32,6 @@ use ash::Entry;
 type Entry = ash::EntryCustom<()>;
 use ash::{
     extensions::{ext, khr, nv::MeshShader},
-    version::{DeviceV1_0, EntryV1_0, InstanceV1_0},
     vk,
 };
 
@@ -594,7 +593,7 @@ impl hal::Instance<Backend> for Instance {
             libc::dlsym(libc::RTLD_NEXT, name.as_ptr())
         });
 
-        let driver_api_version = match entry.try_enumerate_instance_version() {
+        let driver_api_version = match entry?.try_enumerate_instance_version() {
             // Vulkan 1.1+
             Ok(Some(version)) => version.into(),
 

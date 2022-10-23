@@ -1,10 +1,10 @@
 use crate::{Backend, RawDevice, ROUGH_MAX_ATTACHMENT_COUNT};
-use ash::{version::DeviceV1_0, vk};
 use hal::{
     device::OutOfMemory,
     image::{Extent, SubresourceRange},
     pso,
 };
+use ash::vk;
 use inplace_it::inplace_or_alloc_from_iter;
 use parking_lot::Mutex;
 use smallvec::SmallVec;
